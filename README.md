@@ -1,8 +1,8 @@
 <img src="./src/assets/logo_kruger_.png" height="50px">
 
-# Kruger Star Using the Ref Hook - React.js
+# Kruger Star Using the Context Hook - React.js
 
-> Project Using the Ref Hook - React.js
+> Project Using the Context Hook - React.js
 
 <img src="./src/assets/playground3.png" height="300px">
 
