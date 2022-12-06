@@ -4,10 +4,13 @@ import View from "./pages/view";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Store from "./store/store";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <Store>
+    <>
+     <Store>
       <div className="App">
         <Routes>
           <Route path="/" element={<Index />} />
@@ -16,6 +19,7 @@ function App() {
         </Routes>
       </div>
     </Store>
+    </>
   );
 }
 

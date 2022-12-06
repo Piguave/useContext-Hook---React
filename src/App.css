@@ -1,12 +1,4 @@
-.App {
-  text-align: center;
-}
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .App-logo {
   height: 40vmin;
@@ -22,59 +14,159 @@
 body {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(244, 243, 205, 0.8)), url(./assets/fondo5.jpg);
+  background-image: url(./assets/fondo5.jpg);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   font-size: calc(10px + 2vmin);
+}
+.modal-content {
+  background: rgba(41, 38, 38, 0.842) !important;
+  color: #fff !important;
+}
+.modal-backdrop{
+  background-color: rgba(0, 0, 0, 0.823) !important;
+}
+
+/* .modal-header {
+  background-color: rgba(0, 0, 0, 0.823);
   color: white;
+} */
+
+.bodycreate {
+  width: 100% !important;
+
 }
 
-.navbar {
-  width: 80%;
-  margin: auto;
-  padding: 35px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
+.bodyform {
+  width: auto !important;
+  height: auto !important;
+  padding: 5px;
+  border-radius: 20px;
 }
 
+.formu {
+  background: rgba(0, 0, 0, 0.553);
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: medium;
+  font-weight: bolder;
+}
+
+.bodyimg {
+  width: 200px !important;
+  height: 275PX !important;
+  margin: auto !important;
+  background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.59));
+  align-self: center !important;
+  align-items: center !important;
+  align-content: center !important;
+}
 
 
 .logo {
   width: 130px;
   cursor: pointer;
+  margin-left: 50px;
 }
 
-.navbar ul li {
-  list-style: none;
-  display: inline-block;
-  margin: 5px 20px;
+.libroconten {
+  background: linear-gradient(rgba(255, 255, 255, 0.764), rgba(0, 0, 0, 0.205)) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 310px;
+  width: 220px;
+  margin: 50px;
+}
+.libro {
+  margin: auto;
+  padding: 0px;
   position: relative;
-
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-family: Roboto, "sans-serif";
+  font-size: 1rem;
+}
+.libro:hover {
+  color:  rgb(255, 140, 32);
+}
+.libro::before {
+  content: "";
+  height: 3px;
+  width: 0%;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  transition: 0.4s ease-out;
+}
+.libro:hover::before {
+  width: 100%;
 }
 
-.navbar ul li a {
+.navbar {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.407)) !important;
+}
+.navbarContItem{
+  display: flex ;
+  justify-content: flex-end ;
+}
+.navbarL a {
+
+  width: 100%;
+  margin: auto;
+  padding: 0px;
+  margin: 0px 40px;
+  position: relative;
+  text-align: left;
   text-decoration: none;
   color: white;
   font-family: Roboto, "sans-serif";
   font-size: 2rem;
 }
 
-.navbar ul li::before {
+
+.navbar a::before {
   content: "";
   height: 3px;
   width: 0%;
-  background: rgb(220, 102, 18);
+  background: rgb(255, 255, 255);
   position: absolute;
   left: 0;
   bottom: -12px;
   transition: 0.4s ease-out;
 }
 
-.navbar ul li:hover::before {
+.navbar a:hover {
+  color: rgb(255, 140, 32);
+}
+
+.navbar a:hover::before {
   width: 100%;
+}
+
+.footer {
+  width: 100%;
+
+  height: 14px;
+
+  padding: 4px 0px;
+
+  background: #fdf59a;
+
+  font-family: "century gothic", "arial";
+
+  color: #000000;
+
+  font-size: 11px;
+
+  bottom: 0px;
+
+  margin-top: -14px;
+
+  clear: both;
 }
 
 .left {
