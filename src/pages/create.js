@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Layout from "../components/layout";
 import { useAppContext } from "../store/store";
-
+import { Col, Container, Row, Modal } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import coverK from '../assets/niño.png';
+import { useNavigate } from "react-router-dom";
 export default function Create() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -9,30 +13,16 @@ export default function Create() {
   const [intro, setIntro] = useState("");
   const [completed, setCompleted] = useState(false);
   const [review, setReview] = useState("");
+  const home = useNavigate()
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => {
+    setShow(false);
+    home('/');
+  };
+  const handleShow = () => setShow(true);
   const store = useAppContext();
 
-  const inputStyles = {
-    formContainer: {
-      width: "350px",
-      margin: "0 auto",
-    },
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "5px",
-      margin: "15px 0",
-    },
-    title: {
-      fontSize: "16px",
-      textAlign: "left",
-    },
-    input: {
-      padding: "10px",
-      borderRadius: "5px",
-      fontSize: "16px",
-    },
-  };
 
   function handleChange(e) {
     switch (e.target.name) {
@@ -68,6 +58,8 @@ export default function Create() {
     };
 
     store.createItem(newBook);
+    handleShow();
+    
   }
 
   function handleOnChangeFile(e) {
@@ -82,84 +74,84 @@ export default function Create() {
   }
 
   return (
-    <Layout>
-      <form onSubmit={handleSubmit} style={inputStyles.formContainer}>
-        <div style={inputStyles.container}>
-          <div style={inputStyles.title}>Title</div>
-          <input
-            style={inputStyles.input}
-            type="text"
-            name="title"
-            onChange={handleChange}
-            value={title}
-          />
-        </div>
+    <Layout >
 
-        <div style={inputStyles.container}>
-          <div style={inputStyles.title}>Author</div>
-          <input
-            style={inputStyles.input}
-            type="text"
-            name="author"
-            onChange={handleChange}
-            value={author}
-          />
-        </div>
+      <Modal show={show} onHide={handleClose}  >
+        <Modal.Header className="d-flex">
+          <Modal.Title className="m-auto " ><h1 className="text-center text-capitalize">Felicidades</h1></Modal.Title>
+        </Modal.Header>
+        <Modal.Body><h4>Libro Registrado correctamente.</h4>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="light" onClick={handleClose}>Close</Button>
+        </Modal.Footer>
+      </Modal>
 
-        <div style={inputStyles.container}>
-          <div style={inputStyles.title}>Cover</div>
-          <input type="file" name="cover" onChange={handleOnChangeFile} />
-          <div>{!!cover ? <img src={cover} width="100" /> : ""}</div>
-        </div>
+      <Container className="bodycreate">
+        <form onSubmit={handleSubmit} className="bodyform"  >
+          <h1 className="d-flex justify-content-center text-white ">Registra un Libro </h1>
+          <Row className="container-fluid d-flex alight-content-center"  >
+            <Col xs={0} sm={1} md={2} lg={1} xl={2}></Col>
+            <Col className=" mb-1 formu" >
+              <Row >
+                <Col>
+                  <Form.Label className="p-1">Title</Form.Label>
+                  <Form.Control className="d-flex" type="text" name="title" onChange={handleChange} value={title} required />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Label className="p-1">Author</Form.Label>
+                  <Form.Control type="text" name="author" onChange={handleChange} value={author} required />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Label className="p-1">Cover</Form.Label>
+                  <Form.Control type="file" name="cover" onChange={handleOnChangeFile} required />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Label className="p-1">intro</Form.Label>
+                  <Form.Control type="text" name="intro" onChange={handleChange} value={intro} required />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Label className="p-1">Completed</Form.Label>
+                  <Form.Check type="checkbox" name="completed" onChange={handleChange} value={completed} />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Label className="p-1">review</Form.Label>
+                  <Form.Control type="text" name="review" onChange={handleChange} value={review} required />
+                </Col>
+              </Row>
+            </Col>
 
-        <div style={inputStyles.container}>
-          <div style={inputStyles.title}>intro</div>
-          <input
-            style={inputStyles.input}
-            type="text"
-            name="intro"
-            onChange={handleChange}
-            value={intro}
-          />
-        </div>
+            <Col className="d-flex" >
+              <Container className="bodyimg d-flex  justify-content-center ">
+                <Row className="  ">
+                  <Col className="">
+                    <div className=" d-flex ">{!!cover ? <img src={cover} width="220" /> : <img src={coverK} classname="" width="150" />}</div>
+                  </Col>
+                </Row>
+              </Container>
+            </Col>
+          </Row>
 
-        <div style={inputStyles.container}>
-          <div style={inputStyles.title}>Completed</div>
-          <input 
-            style={inputStyles.input}
-            type="checkbox"
-            name="completed"
-            onChange={handleChange}
-            value={completed}
-          />
-        </div>
+          <Row className="container-fluid ">
+            <Col className="p-2 d-flex justify-content-center">
+              <Button type="submit" value="Register book">Register book</Button>
+            </Col>
+          </Row>
 
-        <div style={inputStyles.container}>
-          <div style={inputStyles.title}>review</div>
-          <input
-            style={inputStyles.input}
-            type="text"
-            name="review"
-            onChange={handleChange}
-            value={review}
-          />
-        </div>
+        </form>
 
-        <input
-          type="submit"
-          value="Register book"
-          style={{
-            padding: "15px 20px",
-            minWidth: "100px",
-            border: "none",
-            borderRadius: "5px",
-            backgroundColor: "#1e9638",
-            color: "white",
-            fontWeigth: "bolder",
-            fontSize: "18px",
-          }}
-        />
-      </form>
+      </Container>
+
     </Layout>
   );
 }
