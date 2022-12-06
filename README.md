@@ -4,19 +4,19 @@
 
 > Project Using the Context Hook - React.js
 
-<img src="./src/assets/playground3.png" height="300px">
+<img src="./src/assets/playground4.png" height="300px">
 
 ## Built with 
 
 - JavaScript
 - React.js 18
-- emoji-picker-react
+- Bootstrap
 - Vercel 
 - HTML + CSS
 
 ## Live Demo
 
-- [Live demo link ](https://use-context-hook-react.vercel.app/create)
+- [Live demo link ](https://use-context-hook-react-35qn.vercel.app/)
 ## Run it locally
 
  ### Setup
